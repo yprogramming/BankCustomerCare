@@ -27,17 +27,159 @@ public class frmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1105, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 531, Short.MAX_VALUE)
+        );
+
+        jMenuBar1.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+
+        jMenu1.setText("CS Bank");
+        jMenu1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jMenu1.setMargin(new java.awt.Insets(0, 5, 0, 20));
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("ຈັດການຂໍ້ມູນ");
+        jMenu2.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenu2.setMargin(new java.awt.Insets(0, 5, 0, 5));
+
+        jMenu5.setText("ທີຢູ່");
+        jMenu5.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+
+        jMenuItem1.setFont(new java.awt.Font("Phetsarath OT", 0, 16)); // NOI18N
+        jMenuItem1.setText("ແຂວງ");
+        jMenu5.add(jMenuItem1);
+
+        jMenuItem2.setFont(new java.awt.Font("Phetsarath OT", 0, 16)); // NOI18N
+        jMenuItem2.setText("ເມືອງ");
+        jMenu5.add(jMenuItem2);
+
+        jMenu2.add(jMenu5);
+
+        jMenuItem3.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem3.setText("ພະນັກງານ");
+        jMenu2.add(jMenuItem3);
+
+        jMenuItem4.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem4.setText("ລູກຄ້າ");
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem6.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem6.setText("ປະເພດບັນຊີ");
+        jMenu2.add(jMenuItem6);
+
+        jMenuItem5.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem5.setText("ປະເພດບັດ");
+        jMenu2.add(jMenuItem5);
+
+        jMenuItem7.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem7.setText("ສະກຸນເງິນ");
+        jMenu2.add(jMenuItem7);
+
+        jMenuItem8.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem8.setText("ອັດຕາດອກເບ້ຍ");
+        jMenu2.add(jMenuItem8);
+
+        jMenuItem9.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem9.setText("ອັດຕາແລກປ່ຽນ");
+        jMenu2.add(jMenuItem9);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("ບໍລິການ");
+        jMenu3.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenu3.setMargin(new java.awt.Insets(0, 5, 0, 5));
+
+        jMenuItem10.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem10.setText("ເປີດບັນຊີ");
+        jMenu3.add(jMenuItem10);
+
+        jMenuItem11.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem11.setText("ຝາກເງິນ");
+        jMenu3.add(jMenuItem11);
+
+        jMenuItem12.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem12.setText("ຖອນເງິນ");
+        jMenu3.add(jMenuItem12);
+
+        jMenuItem13.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem13.setText("ໂອນເງິນ");
+        jMenu3.add(jMenuItem13);
+
+        jMenuItem14.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem14.setText("ແລກປ່ຽນເງິນ");
+        jMenu3.add(jMenuItem14);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu6.setText("ຕິດຕາມ");
+        jMenu6.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenu6.setMargin(new java.awt.Insets(0, 5, 0, 5));
+
+        jMenuItem15.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem15.setText("ທຸລະກຳ");
+        jMenu6.add(jMenuItem15);
+
+        jMenuItem16.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenuItem16.setText("ອັດຕາແລກປ່ຽນ");
+        jMenu6.add(jMenuItem16);
+
+        jMenuBar1.add(jMenu6);
+
+        jMenu4.setText("ລາຍງານ");
+        jMenu4.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        jMenu4.setMargin(new java.awt.Insets(0, 5, 0, 5));
+        jMenuBar1.add(jMenu4);
+
+        jMenu7.setText("ເຂົ້າສູ່ລະບົບ");
+        jMenu7.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        jMenuBar1.add(jMenu7);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 967, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 575, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         pack();
@@ -79,5 +221,30 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }
