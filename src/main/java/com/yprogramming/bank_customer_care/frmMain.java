@@ -5,6 +5,7 @@
  */
 package com.yprogramming.bank_customer_care;
 
+import com.yprogramming.controller.userController;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
@@ -20,6 +21,8 @@ import javax.swing.JMenu;
  * @author yProgramming
  */
 public class frmMain extends javax.swing.JFrame {
+    userController userCtrl = new userController();
+    
     JMenu mnLogin = new JMenu("ເຂົ້າລະບົບ");
     JMenu mnRegister = new JMenu("ລົງທະບຽນ");
     boolean checkExistAdmin = false;
@@ -65,11 +68,12 @@ public class frmMain extends javax.swing.JFrame {
 //            dlgRegisterAdmin.setPreferredSize(new Dimension(516, 295));
 //            dlgRegisterAdmin.validate();
             mnFollow.setVisible(false);
+            frmMain _this = this;
             mnRegister.setFont(new Font("Phetsarath OT", Font.PLAIN, 18));
             mnRegister.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    dlgRegisterAdmin.setLocationRelativeTo(null);
+                    dlgRegisterAdmin.setLocationRelativeTo(_this);
                     dlgRegisterAdmin.show();
                 }
 
@@ -180,11 +184,12 @@ public class frmMain extends javax.swing.JFrame {
         mniPersonalInfo = new javax.swing.JMenuItem();
         mniLogout = new javax.swing.JMenuItem();
 
-        dlgRegisterAdmin.setMaximumSize(new java.awt.Dimension(516, 295));
-        dlgRegisterAdmin.setMinimumSize(new java.awt.Dimension(516, 295));
+        dlgRegisterAdmin.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dlgRegisterAdmin.setMaximumSize(new java.awt.Dimension(1024, 720));
         dlgRegisterAdmin.setModal(true);
-        dlgRegisterAdmin.setPreferredSize(new Dimension(516, 295));
-        dlgRegisterAdmin.setResizable(false);
+        dlgRegisterAdmin.setPreferredSize(new java.awt.Dimension(516, 295));
+        dlgRegisterAdmin.setSize(new java.awt.Dimension(516, 295));
+        dlgRegisterAdmin.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnRegisterAdmin.setPreferredSize(new java.awt.Dimension(516, 295));
 
@@ -203,6 +208,11 @@ public class frmMain extends javax.swing.JFrame {
 
         btnLogin1.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
         btnLogin1.setText("ເຂົ້າສູ່ລະບົບ");
+        btnLogin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogin1ActionPerformed(evt);
+            }
+        });
 
         btnCancle1.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
         btnCancle1.setText("ຍົກເລິກ");
@@ -266,26 +276,7 @@ public class frmMain extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        javax.swing.GroupLayout dlgRegisterAdminLayout = new javax.swing.GroupLayout(dlgRegisterAdmin.getContentPane());
-        dlgRegisterAdmin.getContentPane().setLayout(dlgRegisterAdminLayout);
-        dlgRegisterAdminLayout.setHorizontalGroup(
-            dlgRegisterAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 516, Short.MAX_VALUE)
-            .addGroup(dlgRegisterAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dlgRegisterAdminLayout.createSequentialGroup()
-                    .addGap(0, 0, 0)
-                    .addComponent(pnRegisterAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(0, 0, 0)))
-        );
-        dlgRegisterAdminLayout.setVerticalGroup(
-            dlgRegisterAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 345, Short.MAX_VALUE)
-            .addGroup(dlgRegisterAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(dlgRegisterAdminLayout.createSequentialGroup()
-                    .addGap(2, 2, 2)
-                    .addComponent(pnRegisterAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 340, Short.MAX_VALUE)
-                    .addGap(3, 3, 3)))
-        );
+        dlgRegisterAdmin.getContentPane().add(pnRegisterAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, -1, 340));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -565,8 +556,19 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancleActionPerformed
 
     private void btnCancle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancle1ActionPerformed
-        // TODO add your handling code here:
+        //dlgRegisterAdmin.setVisible(false);
+        dlgRegisterAdmin.dispose();
+        //dlgRegisterAdmin.hide();
     }//GEN-LAST:event_btnCancle1ActionPerformed
+
+    private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
+        boolean result = userCtrl.registerAdmin(txtUserName.getText(), txtPassword.getText());
+        if(result){
+            System.out.println("Success");
+        } else {
+            System.out.println("Error");
+        }
+    }//GEN-LAST:event_btnLogin1ActionPerformed
 //test test123
     /**
      * @param args the command line arguments
