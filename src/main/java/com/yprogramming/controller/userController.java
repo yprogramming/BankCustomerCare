@@ -8,6 +8,7 @@ package com.yprogramming.controller;
 import com.yprogramming.db.dbConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,21 @@ public class userController extends dbConnection {
     dbConnection dbConnect = new dbConnection();
     public userController(){
         connection = getDbConnection();
+    }
+    
+    public String getEmployeeAutoID(){
+        String sql = "call sp_get_auto_id(?);"; //
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, "EM_ID");
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                return rs.getString("ID");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(userController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
     }
     
     public boolean registerAdmin(String username, String password){
