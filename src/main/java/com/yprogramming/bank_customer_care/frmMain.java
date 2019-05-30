@@ -15,6 +15,8 @@ import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -32,10 +34,10 @@ public class frmMain extends javax.swing.JFrame {
     public frmMain() {
         initComponents();
         this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-        mnbMain.add(Box.createHorizontalGlue());
         
-        if(checkExistAdmin){
-            mnLogin.setFont(new Font("Phetsarath OT", Font.PLAIN, 18));
+        mnbMain.add(Box.createHorizontalGlue());
+        pnLogin.setVisible(false);
+        mnLogin.setFont(new Font("Phetsarath OT", Font.PLAIN, 18));
             mnLogin.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -64,10 +66,7 @@ public class frmMain extends javax.swing.JFrame {
                 }
             });
             mnbMain.add(mnLogin);
-        } else {
-//            dlgRegisterAdmin.setPreferredSize(new Dimension(516, 295));
-//            dlgRegisterAdmin.validate();
-            mnFollow.setVisible(false);
+        
             frmMain _this = this;
             mnRegister.setFont(new Font("Phetsarath OT", Font.PLAIN, 18));
             mnRegister.addMouseListener(new MouseListener() {
@@ -98,9 +97,19 @@ public class frmMain extends javax.swing.JFrame {
                 }
             });
             mnbMain.add(mnRegister);
+        
+        mnLogin.setVisible(false);
+        mnRegister.setVisible(false);
+                
+        if(checkExistAdmin){
+            mnLogin.setVisible(true);
+        } else {
+//            dlgRegisterAdmin.setPreferredSize(new Dimension(516, 295));
+//            dlgRegisterAdmin.validate();
+            mnFollow.setVisible(false);
+            mnRegister.setVisible(true);
         }
         
-        pnLogin.setVisible(false);
         mnManage.setVisible(false);
         mnService.setVisible(false);
         mnTransaction.setVisible(false);
@@ -207,7 +216,7 @@ public class frmMain extends javax.swing.JFrame {
         txtPassword1.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
 
         btnLogin1.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
-        btnLogin1.setText("ເຂົ້າສູ່ລະບົບ");
+        btnLogin1.setText("ລົງທະບຽນ");
         btnLogin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogin1ActionPerformed(evt);
@@ -562,11 +571,26 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancle1ActionPerformed
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
-        boolean result = userCtrl.registerAdmin(txtUserName.getText(), txtPassword.getText());
+        
+        if(txtUserName1.getText().trim().isEmpty() 
+                || 
+          txtPassword1.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "ຊື່ເຂົ້າໃຊ້ລະບົບ ຫຼື ລະຫັດຜ່ານຫ້າມວ່າງ");
+            return;
+        }
+        if(!txtPassword1.getText().equals(txtPassword2.getText())){
+            JOptionPane.showMessageDialog(this, "Password is not matched");
+            return;
+        }
+        
+        boolean result = userCtrl.registerAdmin(txtUserName1.getText(), txtPassword1.getText());
         if(result){
-            System.out.println("Success");
+            JOptionPane.showMessageDialog(this, "Register admin succesfully");
+            mnRegister.setVisible(false);
+            dlgRegisterAdmin.dispose();
+            mnLogin.setVisible(true);
         } else {
-            System.out.println("Error");
+            JOptionPane.showMessageDialog(this, "Register admin failed");
         }
     }//GEN-LAST:event_btnLogin1ActionPerformed
 //test test123

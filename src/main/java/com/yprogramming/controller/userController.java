@@ -41,11 +41,17 @@ public class userController extends dbConnection {
     
     public boolean registerAdmin(String username, String password){
         try {
-            String sql = "insert into tb_user values(?,?,?,?)";
+            String emId = getEmployeeAutoID();
+            String sql = "insert into tb_employee(employee_id) values(?);";
             PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, emId);
+            stm.executeUpdate();
+            
+            sql = "insert into tb_user values(?,password(?),?,?);";
+            stm = connection.prepareStatement(sql);
             stm.setString(1, username);
             stm.setString(2, password);
-            stm.setString(3, "em001");
+            stm.setString(3, emId);
             stm.setString(4, "admin");
             stm.executeUpdate();
             return true;

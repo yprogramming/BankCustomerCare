@@ -136,7 +136,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Phetsarath OT" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#xec0;&#xe82;&#xebb;&#xec9;&#xeb2;&#xeaa;&#xeb9;&#xec8;&#xea5;&#xeb0;&#xe9a;&#xebb;&#xe9a;"/>
+                <Property name="text" type="java.lang.String" value="&#xea5;&#xebb;&#xe87;&#xe97;&#xeb0;&#xe9a;&#xebd;&#xe99;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogin1ActionPerformed"/>
