@@ -100,7 +100,8 @@ public class frmMain extends javax.swing.JFrame {
         
         mnLogin.setVisible(false);
         mnRegister.setVisible(false);
-                
+        
+        checkExistAdmin = userCtrl.getCheckAdmin();
         if(checkExistAdmin){
             mnLogin.setVisible(true);
         } else {
@@ -145,6 +146,8 @@ public class frmMain extends javax.swing.JFrame {
         btnCancle1 = new javax.swing.JButton();
         txtPassword2 = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
         dktMain = new javax.swing.JDesktopPane();
         pnLogin = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -196,24 +199,31 @@ public class frmMain extends javax.swing.JFrame {
         dlgRegisterAdmin.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dlgRegisterAdmin.setMaximumSize(new java.awt.Dimension(1024, 720));
         dlgRegisterAdmin.setModal(true);
-        dlgRegisterAdmin.setPreferredSize(new java.awt.Dimension(516, 295));
-        dlgRegisterAdmin.setSize(new java.awt.Dimension(516, 295));
+        dlgRegisterAdmin.setPreferredSize(new java.awt.Dimension(530, 450));
+        dlgRegisterAdmin.setResizable(false);
+        dlgRegisterAdmin.setSize(new java.awt.Dimension(530, 450));
         dlgRegisterAdmin.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnRegisterAdmin.setPreferredSize(new java.awt.Dimension(516, 295));
+        pnRegisterAdmin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
         jLabel4.setText("ລະຫັດຜ່ານ");
+        pnRegisterAdmin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Phetsarath OT", 1, 30)); // NOI18N
         jLabel5.setText("ລົງທະບຽນ");
+        pnRegisterAdmin.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 13, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
         jLabel6.setText("ຊື່ເຂົ້າໃຊ້ລະບົບ");
+        pnRegisterAdmin.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         txtUserName1.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        pnRegisterAdmin.add(txtUserName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 450, -1));
 
         txtPassword1.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        pnRegisterAdmin.add(txtPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 450, -1));
 
         btnLogin1.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
         btnLogin1.setText("ລົງທະບຽນ");
@@ -222,6 +232,7 @@ public class frmMain extends javax.swing.JFrame {
                 btnLogin1ActionPerformed(evt);
             }
         });
+        pnRegisterAdmin.add(btnLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 210, -1));
 
         btnCancle1.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
         btnCancle1.setText("ຍົກເລິກ");
@@ -230,62 +241,23 @@ public class frmMain extends javax.swing.JFrame {
                 btnCancle1ActionPerformed(evt);
             }
         });
+        pnRegisterAdmin.add(btnCancle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 200, -1));
 
         txtPassword2.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        pnRegisterAdmin.add(txtPassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 450, -1));
 
         jLabel7.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
         jLabel7.setText("ຢືນຢັນລະຫັດຜ່ານ");
+        pnRegisterAdmin.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
 
-        javax.swing.GroupLayout pnRegisterAdminLayout = new javax.swing.GroupLayout(pnRegisterAdmin);
-        pnRegisterAdmin.setLayout(pnRegisterAdminLayout);
-        pnRegisterAdminLayout.setHorizontalGroup(
-            pnRegisterAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnRegisterAdminLayout.createSequentialGroup()
-                .addGroup(pnRegisterAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnRegisterAdminLayout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(jLabel5))
-                    .addGroup(pnRegisterAdminLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(pnRegisterAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(txtUserName1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addGroup(pnRegisterAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnRegisterAdminLayout.createSequentialGroup()
-                                    .addComponent(btnCancle1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtPassword1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel7)
-                            .addComponent(txtPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-        pnRegisterAdminLayout.setVerticalGroup(
-            pnRegisterAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnRegisterAdminLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addGap(3, 3, 3)
-                .addComponent(txtUserName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(jLabel4)
-                .addGap(3, 3, 3)
-                .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addGap(3, 3, 3)
-                .addComponent(txtPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnRegisterAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancle1)
-                    .addComponent(btnLogin1))
-                .addGap(25, 25, 25))
-        );
+        jLabel8.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        jLabel8.setText("ຊື່ ແລະ ນາມສະກຸນ");
+        pnRegisterAdmin.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
-        dlgRegisterAdmin.getContentPane().add(pnRegisterAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, -1, 340));
+        txtName.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        pnRegisterAdmin.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 450, -1));
+
+        dlgRegisterAdmin.getContentPane().add(pnRegisterAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 530, 410));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -574,8 +546,10 @@ public class frmMain extends javax.swing.JFrame {
         
         if(txtUserName1.getText().trim().isEmpty() 
                 || 
-          txtPassword1.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(this, "ຊື່ເຂົ້າໃຊ້ລະບົບ ຫຼື ລະຫັດຜ່ານຫ້າມວ່າງ");
+          txtPassword1.getText().trim().isEmpty()
+                || 
+          txtName.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "ຊື່-ນາມສະກຸນ, ຊື່ເຂົ້າໃຊ້ລະບົບ ຫຼື ລະຫັດຜ່ານຫ້າມວ່າງ");
             return;
         }
         if(!txtPassword1.getText().equals(txtPassword2.getText())){
@@ -583,7 +557,7 @@ public class frmMain extends javax.swing.JFrame {
             return;
         }
         
-        boolean result = userCtrl.registerAdmin(txtUserName1.getText(), txtPassword1.getText());
+        boolean result = userCtrl.registerAdmin(txtName.getText().trim(),txtUserName1.getText(), txtPassword1.getText());
         if(result){
             JOptionPane.showMessageDialog(this, "Register admin succesfully");
             mnRegister.setVisible(false);
@@ -643,6 +617,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
@@ -683,6 +658,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniProvince;
     private javax.swing.JPanel pnLogin;
     private javax.swing.JPanel pnRegisterAdmin;
+    private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JPasswordField txtPassword1;
     private javax.swing.JPasswordField txtPassword2;

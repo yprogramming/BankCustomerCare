@@ -39,12 +39,46 @@ public class userController extends dbConnection {
         return "";
     }
     
-    public boolean registerAdmin(String username, String password){
+    public boolean getCheckAdmin(){
+        String sql = "select permission from tb_user where "
+                + "permission = ?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, "admin");
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(userController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public boolean doLogin(String username, String password){
+        String sql = "select * from v_employee where "
+                + "username = ? and password = ?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, username);
+            stm.setString(2, password);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(userController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public boolean registerAdmin(String name, String username, String password){
         try {
             String emId = getEmployeeAutoID();
-            String sql = "insert into tb_employee(employee_id) values(?);";
+            String sql = "insert into tb_employee(employee_id, full_name) values(?,?);";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, emId);
+            stm.setString(2, name);
             stm.executeUpdate();
             
             sql = "insert into tb_user values(?,password(?),?,?);";
