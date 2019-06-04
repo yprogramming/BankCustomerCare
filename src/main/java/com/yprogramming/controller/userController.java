@@ -57,7 +57,7 @@ public class userController extends dbConnection {
     
     public boolean doLogin(String username, String password){
         String sql = "select * from v_employee where "
-                + "username = ? and password = ?";
+                + "username = ? and passwd = password(?)";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);

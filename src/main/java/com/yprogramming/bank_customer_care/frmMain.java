@@ -197,9 +197,7 @@ public class frmMain extends javax.swing.JFrame {
         mniLogout = new javax.swing.JMenuItem();
 
         dlgRegisterAdmin.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dlgRegisterAdmin.setMaximumSize(new java.awt.Dimension(1024, 720));
         dlgRegisterAdmin.setModal(true);
-        dlgRegisterAdmin.setPreferredSize(new java.awt.Dimension(530, 450));
         dlgRegisterAdmin.setResizable(false);
         dlgRegisterAdmin.setSize(new java.awt.Dimension(530, 450));
         dlgRegisterAdmin.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -278,6 +276,11 @@ public class frmMain extends javax.swing.JFrame {
 
         btnLogin.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
         btnLogin.setText("ເຂົ້າສູ່ລະບົບ");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         btnCancle.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
         btnCancle.setText("ຍົກເລິກ");
@@ -567,6 +570,30 @@ public class frmMain extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Register admin failed");
         }
     }//GEN-LAST:event_btnLogin1ActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        if(txtUserName.getText().trim().isEmpty() 
+                || 
+          txtPassword.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Username or password is required");
+            return;
+        }
+        boolean logined = userCtrl.doLogin(
+                txtUserName.getText(), 
+                txtPassword.getText()
+        );
+        if(logined){
+            mnLogin.setVisible(false);
+            pnLogin.setVisible(false);
+            mnManage.setVisible(true);
+            mnService.setVisible(true);
+            mnTransaction.setVisible(true);
+            mnReport.setVisible(true);
+            mnUser.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Username or password is incorrect");
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
 //test test123
     /**
      * @param args the command line arguments
