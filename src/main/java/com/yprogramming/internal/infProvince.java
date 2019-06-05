@@ -9,12 +9,12 @@ package com.yprogramming.internal;
  *
  * @author yProgramming
  */
-public class infInterestSetting extends javax.swing.JInternalFrame {
+public class infProvince extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form infInterestSetting
+     * Creates new form infProvince
      */
-    public infInterestSetting() {
+    public infProvince() {
         initComponents();
     }
 
@@ -28,18 +28,17 @@ public class infInterestSetting extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         setClosable(true);
-        setMaximizable(true);
         setResizable(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 792, Short.MAX_VALUE)
+            .addGap(0, 666, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
+            .addGap(0, 371, Short.MAX_VALUE)
         );
 
         pack();

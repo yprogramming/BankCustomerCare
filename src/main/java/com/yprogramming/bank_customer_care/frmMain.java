@@ -6,7 +6,14 @@
 package com.yprogramming.bank_customer_care;
 
 import com.yprogramming.controller.userController;
+import com.yprogramming.internal.infAccountType;
+import com.yprogramming.internal.infCardType;
+import com.yprogramming.internal.infCurrency;
+import com.yprogramming.internal.infDistrict;
 import com.yprogramming.internal.infEmployee;
+import com.yprogramming.internal.infExchangeRate;
+import com.yprogramming.internal.infInterestSetting;
+import com.yprogramming.internal.infProvince;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
@@ -43,7 +50,8 @@ public class frmMain extends javax.swing.JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     pnLogin.setVisible(true);
-                    pnLogin.setFocusable(true);
+                    pnLogin.requestFocus();
+                    txtUserName.requestFocus();
                 }
 
                 @Override
@@ -370,10 +378,20 @@ public class frmMain extends javax.swing.JFrame {
 
         mniProvince.setFont(new java.awt.Font("Phetsarath OT", 0, 16)); // NOI18N
         mniProvince.setText("ແຂວງ");
+        mniProvince.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniProvinceActionPerformed(evt);
+            }
+        });
         mnAddress.add(mniProvince);
 
         mniDistrict.setFont(new java.awt.Font("Phetsarath OT", 0, 16)); // NOI18N
         mniDistrict.setText("ເມືອງ");
+        mniDistrict.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDistrictActionPerformed(evt);
+            }
+        });
         mnAddress.add(mniDistrict);
 
         mnManage.add(mnAddress);
@@ -393,22 +411,47 @@ public class frmMain extends javax.swing.JFrame {
 
         jMenuItem6.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
         jMenuItem6.setText("ປະເພດບັນຊີ");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         mnManage.add(jMenuItem6);
 
         jMenuItem5.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
         jMenuItem5.setText("ປະເພດບັດ");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         mnManage.add(jMenuItem5);
 
         jMenuItem7.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
         jMenuItem7.setText("ສະກຸນເງິນ");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         mnManage.add(jMenuItem7);
 
         jMenuItem8.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
         jMenuItem8.setText("ອັດຕາດອກເບ້ຍ");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         mnManage.add(jMenuItem8);
 
         jMenuItem9.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
         jMenuItem9.setText("ອັດຕາແລກປ່ຽນ");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         mnManage.add(jMenuItem9);
 
         mnbMain.add(mnManage);
@@ -618,13 +661,136 @@ public class frmMain extends javax.swing.JFrame {
         mnReport.setVisible(false);
         mnUser.setVisible(false);
         mnLogin.setVisible(true);
+        int formOpens = dktMain.getAllFrames().length;
+        for(int i = 0; i < formOpens; i++){
+            dktMain.getAllFrames()[0].dispose();
+        }
     }//GEN-LAST:event_mniLogoutActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        infEmployee em = new infEmployee();
-        em.show();
-        dktMain.add(em);
+        if(!static_variable.checkManageEmployee){
+            infEmployee em = new infEmployee();
+            int dktMainWidth = dktMain.getWidth();
+            int dktMainHeight = dktMain.getHeight();
+            int emWidth = em.getWidth();
+            int emHeight = em.getHeight();
+            em.setLocation(
+                    (dktMainWidth - emWidth)/2, 
+                    (dktMainHeight - emHeight)/2
+            );
+            em.show();
+            dktMain.add(em);
+            static_variable.checkManageEmployee = true;
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void mniProvinceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniProvinceActionPerformed
+        if(!static_variable.checkManageProvince){
+            infProvince prov = new infProvince();
+            int dktMainWidth = dktMain.getWidth();
+            int dktMainHeight = dktMain.getHeight();
+            int width = prov.getWidth();
+            int height = prov.getHeight();
+            prov.setLocation(
+                    (dktMainWidth - width)/2, 
+                    (dktMainHeight - height)/2
+            );
+            prov.show();
+            dktMain.add(prov);
+            static_variable.checkManageProvince = true;
+        }
+    }//GEN-LAST:event_mniProvinceActionPerformed
+
+    private void mniDistrictActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDistrictActionPerformed
+        if(!static_variable.checkManageDistrict){
+            infDistrict dis = new infDistrict();
+            int dktMainWidth = dktMain.getWidth();
+            int dktMainHeight = dktMain.getHeight();
+            int width = dis.getWidth();
+            int height = dis.getHeight();
+            dis.setLocation(
+                    (dktMainWidth - width)/2, 
+                    (dktMainHeight - height)/2
+            );
+            dis.show();
+            dktMain.add(dis);
+            static_variable.checkManageDistrict = true;
+        }
+    }//GEN-LAST:event_mniDistrictActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        if(!static_variable.checkManageAccoutType){
+            infAccountType acct = new infAccountType();
+            int dktMainWidth = dktMain.getWidth();
+            int dktMainHeight = dktMain.getHeight();
+            int width = acct.getWidth();
+            int height = acct.getHeight();
+            acct.setLocation(
+                    (dktMainWidth - width)/2, 
+                    (dktMainHeight - height)/2
+            );
+            acct.show();
+            dktMain.add(acct);
+            static_variable.checkManageAccoutType = true;
+        }
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        if(!static_variable.checkManageCardType){
+            infCardType ct = new infCardType();
+            int dktMainWidth = dktMain.getWidth();
+            int dktMainHeight = dktMain.getHeight();
+            int width = ct.getWidth();
+            int height = ct.getHeight();
+            ct.setLocation(
+                    (dktMainWidth - width)/2, 
+                    (dktMainHeight - height)/2
+            );
+            ct.show();
+            dktMain.add(ct);
+            static_variable.checkManageCardType = true;
+        }
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        if(!static_variable.checkManageCurrency){
+            infCurrency cur = new infCurrency();
+            int dktMainWidth = dktMain.getWidth();
+            int dktMainHeight = dktMain.getHeight();
+            int width = cur.getWidth();
+            int height = cur.getHeight();
+            cur.setLocation(
+                    (dktMainWidth - width)/2, 
+                    (dktMainHeight - height)/2
+            );
+            cur.show();
+            dktMain.add(cur);
+            static_variable.checkManageCurrency = true;
+        }
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        if(!static_variable.checkManageInterestSetting){
+            infInterestSetting is = new infInterestSetting();
+            int dktMainWidth = dktMain.getWidth();
+            int dktMainHeight = dktMain.getHeight();
+            int width = is.getWidth();
+            int height = is.getHeight();
+            is.setLocation(
+                    (dktMainWidth - width)/2, 
+                    (dktMainHeight - height)/2
+            );
+            is.show();
+            dktMain.add(is);
+            static_variable.checkManageInterestSetting = true;
+        }
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        infExchangeRate er = new infExchangeRate();
+        er.show();
+        dktMain.add(er);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 //test test123
     /**
      * @param args the command line arguments
