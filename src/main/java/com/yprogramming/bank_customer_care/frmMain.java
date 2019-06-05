@@ -6,6 +6,7 @@
 package com.yprogramming.bank_customer_care;
 
 import com.yprogramming.controller.userController;
+import com.yprogramming.internal.infEmployee;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
@@ -379,6 +380,11 @@ public class frmMain extends javax.swing.JFrame {
 
         jMenuItem3.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
         jMenuItem3.setText("ພະນັກງານ");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         mnManage.add(jMenuItem3);
 
         jMenuItem4.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
@@ -513,6 +519,11 @@ public class frmMain extends javax.swing.JFrame {
 
         mniLogout.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
         mniLogout.setText("ອອກລະບົບ");
+        mniLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLogoutActionPerformed(evt);
+            }
+        });
         mnUser.add(mniLogout);
 
         mnbMain.add(mnUser);
@@ -590,10 +601,30 @@ public class frmMain extends javax.swing.JFrame {
             mnTransaction.setVisible(true);
             mnReport.setVisible(true);
             mnUser.setVisible(true);
+            mnUser.setText(
+               static_variable.currentLoginUser.getFullName()
+            );
+            txtUserName.setText("");
+            txtPassword.setText("");
         } else {
             JOptionPane.showMessageDialog(this, "Username or password is incorrect");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void mniLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogoutActionPerformed
+        mnManage.setVisible(false);
+        mnService.setVisible(false);
+        mnTransaction.setVisible(false);
+        mnReport.setVisible(false);
+        mnUser.setVisible(false);
+        mnLogin.setVisible(true);
+    }//GEN-LAST:event_mniLogoutActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        infEmployee em = new infEmployee();
+        em.show();
+        dktMain.add(em);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 //test test123
     /**
      * @param args the command line arguments

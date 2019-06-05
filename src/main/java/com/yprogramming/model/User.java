@@ -26,7 +26,20 @@ public class User {
     private String username;
     private String permission;
 
-    public User(String employeeId, String fullName, String village, String districtId, String districtName, String provinceId, String provinceName, String image, Date birthDate, Date createdDate, Date updateDate, String username, String permission) {
+    public User(
+            String employeeId, 
+            String fullName, 
+            String village, 
+            String districtId, 
+            String districtName, 
+            String provinceId, 
+            String provinceName, 
+            String image, 
+            Date birthDate, 
+            Date createdDate, 
+            Date updateDate, 
+            String username, 
+            String permission) {
         this.employeeId = employeeId;
         this.fullName = fullName;
         this.village = village;

@@ -5,7 +5,9 @@
  */
 package com.yprogramming.controller;
 
+import com.yprogramming.bank_customer_care.static_variable;
 import com.yprogramming.db.dbConnection;
+import com.yprogramming.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,6 +66,22 @@ public class userController extends dbConnection {
             stm.setString(2, password);
             ResultSet rs = stm.executeQuery();
             if(rs.next()){
+                User user = new User(
+                        rs.getString("employee_id"), 
+                        rs.getString("full_name"), 
+                        rs.getString("village"), 
+                        rs.getString("district_id"), 
+                        rs.getString("district_name"), 
+                        rs.getString("prov_id"), 
+                        rs.getString("province_name"), 
+                        rs.getString("image"), 
+                        rs.getDate("birth_date"), 
+                        rs.getDate("created_date"), 
+                        rs.getDate("updated_date"), 
+                        rs.getString("username"), 
+                        rs.getString("permission")
+                );
+                static_variable.currentLoginUser = user;
                 return true;
             }
         } catch (SQLException ex) {
