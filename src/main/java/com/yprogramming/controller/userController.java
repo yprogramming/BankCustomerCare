@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class userController extends dbConnection {
     Connection connection = null;
-    dbConnection dbConnect = new dbConnection();
+    //dbConnection dbConnect = new dbConnection();
     public userController(){
         connection = getDbConnection();
     }

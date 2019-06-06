@@ -120,11 +120,11 @@ public class frmMain extends javax.swing.JFrame {
             mnRegister.setVisible(true);
         }
         
-        mnManage.setVisible(false);
-        mnService.setVisible(false);
-        mnTransaction.setVisible(false);
-        mnReport.setVisible(false);
-        mnUser.setVisible(false);
+//        mnManage.setVisible(false);
+//        mnService.setVisible(false);
+//        mnTransaction.setVisible(false);
+//        mnReport.setVisible(false);
+//        mnUser.setVisible(false);
         
         int desktopPaneWidth = dktMain.getWidth();
         int desktopPaneHeight = dktMain.getHeight();
