@@ -6,10 +6,12 @@
 package com.yprogramming.internal;
 
 import com.yprogramming.bank_customer_care.static_variable;
+import com.yprogramming.component.JButtonCellRender;
 import com.yprogramming.controller.employeeController;
 import com.yprogramming.model.User;
 import java.awt.Font;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class infEmployee extends javax.swing.JInternalFrame {
     employeeController employeeCtrl = new employeeController();
     List<User> employees;
+    DefaultTableModel employeeModel;
     /**
      * Creates new form infEmployee
      */
@@ -27,6 +30,29 @@ public class infEmployee extends javax.swing.JInternalFrame {
         tbEmployee.getTableHeader().setFont(
              new Font("Saysettha OT", Font.BOLD, 18)
          );
+        int columnLength = tbEmployee
+                .getColumnModel().getColumnCount();
+        JButtonCellRender delButton 
+                = new JButtonCellRender("ລົບ");
+        tbEmployee
+                .getColumnModel()
+                .getColumn(columnLength - 1)
+                .setCellRenderer(delButton);
+        tbEmployee
+                .getColumnModel()
+                .getColumn(columnLength - 2)
+                .setCellRenderer(
+                    new JButtonCellRender("ແກ້ໄຂ")
+                );
+        tbEmployee
+                .getColumnModel()
+                .getColumn(columnLength - 3)
+                .setCellRenderer(
+                    new JButtonCellRender("ລາຍລະອຽດ")
+                );
+        employeeModel = (DefaultTableModel)
+                tbEmployee.getModel();
+        
         employees = employeeCtrl.getEmpoyees();
         for(User user: employees){
             Object[] row = {
@@ -37,9 +63,7 @@ public class infEmployee extends javax.swing.JInternalFrame {
                 user.getProvinceName(),
                 user.getBirthDate()
             };
-            (
-               (DefaultTableModel)tbEmployee.getModel()
-            ).addRow(row);
+            employeeModel.addRow(row);
         }
     }
 
@@ -52,13 +76,61 @@ public class infEmployee extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dlgAddEmployee = new javax.swing.JDialog();
+        dlgEmployeeDetail = new javax.swing.JDialog();
+        dlgEmployeeUpdate = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbEmployee = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+
+        dlgAddEmployee.setTitle("Add");
+        dlgAddEmployee.setModal(true);
+        dlgAddEmployee.setSize(new java.awt.Dimension(966, 570));
+
+        javax.swing.GroupLayout dlgAddEmployeeLayout = new javax.swing.GroupLayout(dlgAddEmployee.getContentPane());
+        dlgAddEmployee.getContentPane().setLayout(dlgAddEmployeeLayout);
+        dlgAddEmployeeLayout.setHorizontalGroup(
+            dlgAddEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 966, Short.MAX_VALUE)
+        );
+        dlgAddEmployeeLayout.setVerticalGroup(
+            dlgAddEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 570, Short.MAX_VALUE)
+        );
+
+        dlgEmployeeDetail.setTitle("detail");
+        dlgEmployeeDetail.setModal(true);
+        dlgEmployeeDetail.setSize(new java.awt.Dimension(971, 494));
+
+        javax.swing.GroupLayout dlgEmployeeDetailLayout = new javax.swing.GroupLayout(dlgEmployeeDetail.getContentPane());
+        dlgEmployeeDetail.getContentPane().setLayout(dlgEmployeeDetailLayout);
+        dlgEmployeeDetailLayout.setHorizontalGroup(
+            dlgEmployeeDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 971, Short.MAX_VALUE)
+        );
+        dlgEmployeeDetailLayout.setVerticalGroup(
+            dlgEmployeeDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 494, Short.MAX_VALUE)
+        );
+
+        dlgEmployeeUpdate.setTitle("Edit");
+        dlgEmployeeUpdate.setModal(true);
+        dlgEmployeeUpdate.setSize(new java.awt.Dimension(947, 506));
+
+        javax.swing.GroupLayout dlgEmployeeUpdateLayout = new javax.swing.GroupLayout(dlgEmployeeUpdate.getContentPane());
+        dlgEmployeeUpdate.getContentPane().setLayout(dlgEmployeeUpdateLayout);
+        dlgEmployeeUpdateLayout.setHorizontalGroup(
+            dlgEmployeeUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 947, Short.MAX_VALUE)
+        );
+        dlgEmployeeUpdateLayout.setVerticalGroup(
+            dlgEmployeeUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 506, Short.MAX_VALUE)
+        );
 
         setClosable(true);
         setIconifiable(true);
@@ -90,14 +162,14 @@ public class infEmployee extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ລະຫັດ", "ຊື່-ນາມສະກຸນ", "ບ້ານ", "ເມືອງ", "ແຂວງ", "ວັນເດືອນປີເກີດ", "", ""
+                "ລະຫັດ", "ຊື່-ນາມສະກຸນ", "ບ້ານ", "ເມືອງ", "ແຂວງ", "ວັນເດືອນປີເກີດ", "", "", ""
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -109,14 +181,22 @@ public class infEmployee extends javax.swing.JInternalFrame {
             }
         });
         tbEmployee.setRowHeight(30);
+        tbEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbEmployeeMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbEmployee);
         if (tbEmployee.getColumnModel().getColumnCount() > 0) {
-            tbEmployee.getColumnModel().getColumn(6).setMinWidth(70);
-            tbEmployee.getColumnModel().getColumn(6).setPreferredWidth(70);
-            tbEmployee.getColumnModel().getColumn(6).setMaxWidth(70);
+            tbEmployee.getColumnModel().getColumn(6).setMinWidth(100);
+            tbEmployee.getColumnModel().getColumn(6).setPreferredWidth(100);
+            tbEmployee.getColumnModel().getColumn(6).setMaxWidth(100);
             tbEmployee.getColumnModel().getColumn(7).setMinWidth(70);
             tbEmployee.getColumnModel().getColumn(7).setPreferredWidth(70);
             tbEmployee.getColumnModel().getColumn(7).setMaxWidth(70);
+            tbEmployee.getColumnModel().getColumn(8).setMinWidth(70);
+            tbEmployee.getColumnModel().getColumn(8).setPreferredWidth(70);
+            tbEmployee.getColumnModel().getColumn(8).setMaxWidth(70);
         }
 
         jLabel2.setFont(new java.awt.Font("Phetsarath OT", 1, 30)); // NOI18N
@@ -134,44 +214,38 @@ public class infEmployee extends javax.swing.JInternalFrame {
         jButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 53, Short.MAX_VALUE)
-        );
+        jButton2.setText("Add");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -182,12 +256,38 @@ public class infEmployee extends javax.swing.JInternalFrame {
         static_variable.checkManageEmployee = false;
     }//GEN-LAST:event_formInternalFrameClosed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dlgAddEmployee.setLocationRelativeTo(this);
+        dlgAddEmployee.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tbEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbEmployeeMouseClicked
+        if(evt.getClickCount() == 1){
+            int colIndex = tbEmployee.getSelectedColumn();
+            int rowIndex = tbEmployee.getSelectedRow();
+            int columnLength = tbEmployee
+                .getColumnModel().getColumnCount();
+            if(colIndex == (columnLength - 1)){
+                
+            } else if (colIndex == (columnLength - 2)){
+                dlgEmployeeUpdate.setLocationRelativeTo(this);
+                dlgEmployeeUpdate.show();
+            }else if (colIndex == (columnLength - 3)){
+                dlgEmployeeDetail.setLocationRelativeTo(this);
+                dlgEmployeeDetail.show();
+            }
+        }
+    }//GEN-LAST:event_tbEmployeeMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog dlgAddEmployee;
+    private javax.swing.JDialog dlgEmployeeDetail;
+    private javax.swing.JDialog dlgEmployeeUpdate;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbEmployee;
