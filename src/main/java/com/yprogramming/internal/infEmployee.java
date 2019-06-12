@@ -7,7 +7,10 @@ package com.yprogramming.internal;
 
 import com.yprogramming.bank_customer_care.static_variable;
 import com.yprogramming.component.JButtonCellRender;
+import com.yprogramming.controller.addressController;
 import com.yprogramming.controller.employeeController;
+import com.yprogramming.model.District;
+import com.yprogramming.model.Province;
 import com.yprogramming.model.User;
 import java.awt.Font;
 import java.util.List;
@@ -20,51 +23,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class infEmployee extends javax.swing.JInternalFrame {
     employeeController employeeCtrl = new employeeController();
+    addressController addressCtrl = new addressController();
+    
     List<User> employees;
+    List<Province> provinces;
+    List<District> districts;
+    
     DefaultTableModel employeeModel;
     /**
      * Creates new form infEmployee
      */
     public infEmployee() {
         initComponents();
-        tbEmployee.getTableHeader().setFont(
-             new Font("Saysettha OT", Font.BOLD, 18)
-         );
-        int columnLength = tbEmployee
-                .getColumnModel().getColumnCount();
-        JButtonCellRender delButton 
-                = new JButtonCellRender("ລົບ");
-        tbEmployee
-                .getColumnModel()
-                .getColumn(columnLength - 1)
-                .setCellRenderer(delButton);
-        tbEmployee
-                .getColumnModel()
-                .getColumn(columnLength - 2)
-                .setCellRenderer(
-                    new JButtonCellRender("ແກ້ໄຂ")
-                );
-        tbEmployee
-                .getColumnModel()
-                .getColumn(columnLength - 3)
-                .setCellRenderer(
-                    new JButtonCellRender("ລາຍລະອຽດ")
-                );
-        employeeModel = (DefaultTableModel)
-                tbEmployee.getModel();
+        initTableEmployee();
+        loadEmployeeData();
+        loadProvince();
         
-        employees = employeeCtrl.getEmpoyees();
-        for(User user: employees){
-            Object[] row = {
-                user.getEmployeeId(),
-                user.getFullName(),
-                user.getVillage(),
-                user.getDistrictName(),
-                user.getProvinceName(),
-                user.getBirthDate()
-            };
-            employeeModel.addRow(row);
-        }
     }
 
     /**
@@ -77,6 +51,21 @@ public class infEmployee extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         dlgAddEmployee = new javax.swing.JDialog();
+        lblImage = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtVillage = new javax.swing.JTextField();
+        cbProvince = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        cbDistrict = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        txtBirthDate = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        btnSave = new javax.swing.JButton();
+        btnBrowse = new javax.swing.JButton();
+        btnCancelAdd = new javax.swing.JButton();
         dlgEmployeeDetail = new javax.swing.JDialog();
         dlgEmployeeUpdate = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -89,18 +78,70 @@ public class infEmployee extends javax.swing.JInternalFrame {
 
         dlgAddEmployee.setTitle("Add");
         dlgAddEmployee.setModal(true);
-        dlgAddEmployee.setSize(new java.awt.Dimension(966, 570));
+        dlgAddEmployee.setSize(new java.awt.Dimension(966, 546));
+        dlgAddEmployee.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout dlgAddEmployeeLayout = new javax.swing.GroupLayout(dlgAddEmployee.getContentPane());
-        dlgAddEmployee.getContentPane().setLayout(dlgAddEmployeeLayout);
-        dlgAddEmployeeLayout.setHorizontalGroup(
-            dlgAddEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 966, Short.MAX_VALUE)
-        );
-        dlgAddEmployeeLayout.setVerticalGroup(
-            dlgAddEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
-        );
+        lblImage.setBackground(new java.awt.Color(255, 255, 255));
+        lblImage.setOpaque(true);
+        dlgAddEmployee.getContentPane().add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 280, 330));
+
+        jLabel3.setFont(new java.awt.Font("Phetsarath OT", 1, 30)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("ເພີ່ມພະນັກງານ");
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        dlgAddEmployee.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 60));
+
+        txtName.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        dlgAddEmployee.getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 430, -1));
+
+        jLabel4.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        jLabel4.setText("ຊື່ ແລະ ນາມສະກຸນ");
+        dlgAddEmployee.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        jLabel5.setText("ແຂວງ");
+        dlgAddEmployee.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
+
+        txtVillage.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        dlgAddEmployee.getContentPane().add(txtVillage, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 430, -1));
+
+        cbProvince.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        cbProvince.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbProvinceActionPerformed(evt);
+            }
+        });
+        dlgAddEmployee.getContentPane().add(cbProvince, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 430, -1));
+
+        jLabel6.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        jLabel6.setText("ບ້ານ");
+        dlgAddEmployee.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, -1, -1));
+
+        cbDistrict.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
+        dlgAddEmployee.getContentPane().add(cbDistrict, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 430, -1));
+
+        jLabel7.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        jLabel7.setText("ເມືອງ");
+        dlgAddEmployee.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, -1, -1));
+
+        txtBirthDate.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        dlgAddEmployee.getContentPane().add(txtBirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 430, -1));
+
+        jLabel8.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        jLabel8.setText("ວັນເດືອນປີເກີດ");
+        dlgAddEmployee.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, -1));
+
+        btnSave.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        btnSave.setText("ບັນທືກ");
+        dlgAddEmployee.getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, 180, 40));
+
+        btnBrowse.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        btnBrowse.setText("Browse");
+        dlgAddEmployee.getContentPane().add(btnBrowse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 280, 60));
+
+        btnCancelAdd.setFont(new java.awt.Font("Phetsarath OT", 1, 18)); // NOI18N
+        btnCancelAdd.setText("ຍົກເລີກ");
+        dlgAddEmployee.getContentPane().add(btnCancelAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, 200, 40));
 
         dlgEmployeeDetail.setTitle("detail");
         dlgEmployeeDetail.setModal(true);
@@ -279,17 +320,111 @@ public class infEmployee extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tbEmployeeMouseClicked
 
+    private void cbProvinceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProvinceActionPerformed
+        loadDistrinct();
+    }//GEN-LAST:event_cbProvinceActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBrowse;
+    private javax.swing.JButton btnCancelAdd;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> cbDistrict;
+    private javax.swing.JComboBox<String> cbProvince;
     private javax.swing.JDialog dlgAddEmployee;
     private javax.swing.JDialog dlgEmployeeDetail;
     private javax.swing.JDialog dlgEmployeeUpdate;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JTable tbEmployee;
+    private javax.swing.JTextField txtBirthDate;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtVillage;
     // End of variables declaration//GEN-END:variables
+
+    private void initTableEmployee() {
+        tbEmployee.getTableHeader().setFont(
+             new Font("Saysettha OT", Font.BOLD, 18)
+         );
+        int columnLength = tbEmployee
+                .getColumnModel().getColumnCount();
+        JButtonCellRender delButton 
+                = new JButtonCellRender("ລົບ");
+        tbEmployee
+                .getColumnModel()
+                .getColumn(columnLength - 1)
+                .setCellRenderer(delButton);
+        tbEmployee
+                .getColumnModel()
+                .getColumn(columnLength - 2)
+                .setCellRenderer(
+                    new JButtonCellRender("ແກ້ໄຂ")
+                );
+        tbEmployee
+                .getColumnModel()
+                .getColumn(columnLength - 3)
+                .setCellRenderer(
+                    new JButtonCellRender("ລາຍລະອຽດ")
+                );
+        employeeModel = (DefaultTableModel)
+                tbEmployee.getModel();
+    }
+
+    private void loadEmployeeData() {
+        employees = employeeCtrl.getEmpoyees();
+        for(User user: employees){
+            Object[] row = {
+                user.getEmployeeId(),
+                user.getFullName(),
+                user.getVillage(),
+                user.getDistrictName(),
+                user.getProvinceName(),
+                user.getBirthDate()
+            };
+            employeeModel.addRow(row);
+        }
+    }
+
+    private void loadProvince() {
+        provinces = addressCtrl.getProvince();
+        provinces.forEach(
+          (Province prov) -> {
+                cbProvince.addItem(
+                        prov.getProvinceName()
+                );
+          }
+        );//Arrow
+    }
+    
+    private void loadDistrinct() {
+        Province prov = provinces.get(
+                cbProvince.getSelectedIndex()
+        );
+        int provinceId = prov.getProvinceId();
+        
+        int intemCount = cbDistrict.getItemCount();
+        for(int i=0; i < intemCount; i++){
+            cbDistrict.removeItemAt(0);
+        }
+        
+        districts = addressCtrl.getDistrict(provinceId);
+        districts.forEach(
+          (District dis) -> {
+                cbDistrict.addItem(
+                        dis.getDistrictName()
+                );
+          }
+        );//Arrow
+    }
 }
